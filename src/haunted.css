@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&display=swap');
+
+/* ---------- shared intro root ---------- */
+.haunted-intro-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #050303;
+}
+
+/* ---------- "YOU CAN'T ESCAPE" message ---------- */
+.haunted-message-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.haunted-message-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(120, 10, 10, 0.55) 0%, rgba(5, 3, 3, 0.96) 70%);
+}
+
+.haunted-message-text {
+  position: relative;
+  font-family: 'Nosifer', 'Creepster', serif;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  letter-spacing: 0.06em;
+  color: #c40808;
+  text-align: center;
+  text-shadow:
+    0 0 12px rgba(255, 0, 0, 0.75),
+    0 6px 0 rgba(80, 0, 0, 0.9),
+    0 14px 18px rgba(0, 0, 0, 0.85);
+  filter: drop-shadow(0 0 18px rgba(255, 20, 20, 0.5));
+  margin: 0;
+}
+
+.haunted-message-text--ghost {
+  position: absolute;
+  color: #ff2e2e;
+  mix-blend-mode: screen;
+  transform: translate(4px, -2px);
+}
+
+.haunted-message-sub {
+  margin-top: 1.25rem;
+  font-family: monospace;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #ff8a8a;
+  opacity: 0.8;
+}
+
+/* ---------- haunted login card ---------- */
+.haunted-login-perspective {
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.haunted-login-card {
+  position: relative;
+  width: min(420px, 90vw);
+  padding: 2.25rem 2rem 2rem;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(20, 6, 6, 0.92), rgba(8, 2, 2, 0.96));
+  border: 1px solid rgba(255, 40, 40, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 0, 0, 0.08) inset,
+    0 30px 60px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(180, 0, 0, 0.25);
+  transform-style: preserve-3d;
+  animation: haunted-float 5.5s ease-in-out infinite;
+}
+
+@keyframes haunted-float {
+  0%   { transform: rotateX(2deg) rotateY(-2deg) translateY(0px); }
+  50%  { transform: rotateX(-1.5deg) rotateY(2deg) translateY(-6px); }
+  100% { transform: rotateX(2deg) rotateY(-2deg) translateY(0px); }
+}
+
+.haunted-login-card--shake {
+  animation: haunted-shake 0.4s ease-in-out;
+}
+
+@keyframes haunted-shake {
+  0%   { transform: translate(0, 0) rotateZ(0deg); }
+  20%  { transform: translate(-8px, 2px) rotateZ(-1.2deg); }
+  40%  { transform: translate(7px, -3px) rotateZ(1.4deg); }
+  60%  { transform: translate(-6px, 3px) rotateZ(-0.8deg); }
+  80%  { transform: translate(5px, -2px) rotateZ(0.6deg); }
+  100% { transform: translate(0, 0) rotateZ(0deg); }
+}
+
+.haunted-login-card--flicker {
+  animation: haunted-flicker 0.16s steps(2, end);
+}
+
+@keyframes haunted-flicker {
+  0%   { filter: brightness(1) hue-rotate(0deg); }
+  30%  { filter: brightness(2.4) hue-rotate(-8deg) invert(0.05); }
+  60%  { filter: brightness(0.4) hue-rotate(6deg); }
+  100% { filter: brightness(1) hue-rotate(0deg); }
+}
+
+.haunted-login-eyebrow {
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #ff5c5c;
+  opacity: 0.75;
+  margin-bottom: 0.4rem;
+}
+
+.haunted-login-title {
+  font-family: 'Nosifer', 'Creepster', serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: #ff2020;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 0 4px 0 rgba(60, 0, 0, 0.9);
+  margin: 0 0 0.6rem;
+}
+
+.haunted-login-subtitle {
+  font-size: 0.85rem;
+  color: #d99;
+  opacity: 0.75;
+  margin: 0 0 1.4rem;
+  line-height: 1.4;
+}
+
+.haunted-login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  animation: haunted-drift 4.2s ease-in-out infinite;
+}
+
+@keyframes haunted-drift {
+  0%   { transform: translateZ(0px) translateX(0px); }
+  50%  { transform: translateZ(14px) translateX(3px); }
+  100% { transform: translateZ(0px) translateX(0px); }
+}
+
+.haunted-login-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e88;
+}
+
+.haunted-login-input {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 40, 40, 0.4);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  color: #ffdada;
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.haunted-login-input:focus {
+  border-color: #ff3b3b;
+  box-shadow: 0 0 0 3px rgba(255, 30, 30, 0.25), 0 0 22px rgba(255, 0, 0, 0.35);
+}
+
+.haunted-login-error {
+  color: #ff5f5f;
+  font-size: 0.8rem;
+  margin: -0.4rem 0 1rem;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  animation: haunted-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes haunted-pulse {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
+
+.haunted-login-submit {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7a0d0d, #2d0303);
+  color: #ffe4e4;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(150, 0, 0, 0.35);
+  will-change: transform;
+}
+
+.haunted-login-attempts {
+  margin-top: 0.9rem;
+  font-family: monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #a55;
+  text-align: center;
+  opacity: 0.7;
+}

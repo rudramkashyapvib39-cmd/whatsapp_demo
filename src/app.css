@@ -1,0 +1,100 @@
+.app-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--void, #060907);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-mark {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary, #f5f7f6);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.login-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.app-root canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+
+.glitch-invert {
+  position: absolute;
+  inset: 0;
+  background: #ff2e55;
+  mix-blend-mode: exclusion;
+}
+
+.glitch-tear {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(37, 211, 102, 0.14) 0px,
+    rgba(255, 46, 85, 0.1) 6px,
+    rgba(255, 255, 255, 0.08) 12px,
+    transparent 20px
+  );
+  mix-blend-mode: screen;
+}
+
+.glitch-block {
+  position: absolute;
+  mix-blend-mode: screen;
+  filter: blur(0.3px);
+}
+
+@keyframes screen-shake-hard {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-6px, 4px) rotate(-0.4deg); }
+  40% { transform: translate(5px, -6px) rotate(0.3deg); }
+  60% { transform: translate(-4px, -3px) rotate(-0.2deg); }
+  80% { transform: translate(6px, 5px) rotate(0.4deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes screen-shake-violent {
+  0% { transform: translate(0, 0) scale(1); }
+  10% { transform: translate(-14px, 8px) scale(1.01); }
+  20% { transform: translate(12px, -10px) scale(0.99); }
+  30% { transform: translate(-10px, -12px) scale(1.02); }
+  40% { transform: translate(14px, 10px) scale(0.98); }
+  50% { transform: translate(-16px, 6px) scale(1.01); }
+  60% { transform: translate(10px, -14px) scale(1); }
+  70% { transform: translate(-12px, 12px) scale(1.02); }
+  80% { transform: translate(16px, -8px) scale(0.99); }
+  90% { transform: translate(-8px, 10px) scale(1.01); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.app-root--shake-hard {
+  animation: screen-shake-hard 0.28s steps(6) infinite;
+}
+
+.app-root--shake-violent {
+  animation: screen-shake-violent 0.22s steps(8) infinite;
+}

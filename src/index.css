@@ -1,0 +1,64 @@
+:root {
+  --void: #060907;
+  --panel: #0b0f0d;
+  --wa-green: #25d366;
+  --wa-green-dim: #1ea952;
+  --wa-teal: #128c7e;
+  --danger: #ff2e55;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f5f7f6;
+  --text-muted: #8ea39a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background: #0b141a;
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a3942;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+html.haunted,
+.haunted-root {
+  --wa-panel: #0d0000;
+  --wa-panel2: #1a0505;
+  --wa-panel3: #2a0a0a;
+  --wa-teal: #b91c1c;
+  --wa-dim: #7f1d1d;
+  --wa-text: #fecaca;
+  --wa-bg: #0a0000;
+}
