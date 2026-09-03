@@ -230,16 +230,64 @@ function GlitchOverlay({ text }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1, x: [0, -8, 8, -5, 5, -2, 2, 0] }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.55 }}
-      className="fixed inset-0 z-[130] flex items-center justify-center bg-black"
+      transition={{ duration: 0.15 }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black overflow-hidden"
     >
-      <div className="relative select-none text-3xl font-bold uppercase tracking-widest">
-        <span className="absolute inset-0 text-red-500 opacity-80" style={{ transform: "translate(-4px, 2px)" }}>{text}</span>
-        <span className="absolute inset-0 text-cyan-400 opacity-70" style={{ transform: "translate(4px, -2px)" }}>{text}</span>
-        <span className="relative text-white">{text}</span>
-      </div>
+      {/* heavy background noise / scanlines */}
+      <div className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          backgroundImage: `
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(255,0,0,0.15) 2px,
+              rgba(255,0,0,0.15) 4px
+            )
+          `,
+        }}
+      />
+
+      {/* full-screen shaking text */}
+      <motion.div
+        animate={{
+          x: [0, -12, 12, -8, 8, -4, 4, 0],
+          y: [0, 6, -6, 4, -4, 0],
+        }}
+        transition={{ duration: 0.4, repeat: 2 }}
+        className="relative select-none text-center px-4"
+      >
+        {/* red channel */}
+        <span
+          className="absolute inset-0 text-red-500 opacity-80 text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-[0.2em]"
+          style={{ transform: "translate(-6px, 3px)" }}
+        >
+          {text}
+        </span>
+
+        {/* cyan channel */}
+        <span
+          className="absolute inset-0 text-cyan-400 opacity-70 text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-[0.2em]"
+          style={{ transform: "translate(6px, -3px)" }}
+        >
+          {text}
+        </span>
+
+        {/* main white layer */}
+        <span className="relative text-white text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-[0.2em] drop-shadow-[0_0_30px_#f00]">
+          {text}
+        </span>
+      </motion.div>
+
+      {/* extra full-screen red flash */}
+      <motion.div
+        initial={{ opacity: 0.6 }}
+        animate={{ opacity: [0.6, 0, 0.4, 0] }}
+        transition={{ duration: 0.5 }}
+        className="absolute inset-0 bg-red-900/40 pointer-events-none"
+      />
     </motion.div>
   );
 }
